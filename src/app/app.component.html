@@ -3,14 +3,17 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <form (ngSubmit) ="Duplicar();">
+  <form (ngSubmit) ="Multiply();">
       <div>
-        <input type="number" id ="numero" name="numero" placeholder="Write a Number" required [(ngModel)]="numero">
+        
+        <input type="number" id ="numero" name="numero" placeholder="Number1" required [(ngModel)]="numero1">
+        <input type="number" id ="numero" name="numero" placeholder="Number2" required [(ngModel)]="numero2">      
       </div>
-      <button>Duplicar</button>
+      <button>Multiply</button>
 
-
+     
   </form>
- <h2>The result is :{{ resultado }}</h2>
+
+ <h2>The result is :{{ resultadoMulti }}</h2>
 </div>
 
