@@ -1,0 +1,20 @@
+<button (click)="Mostrar()">Monstrar las lista de persona</button>
+
+
+<div >
+  <button (click)="AddUser('Alex','EEE','Student',0)">Add users</button>
+<h2>Lista de Students</h2>
+<ul *ngFor = "let persona of lista">
+  <li >
+    Nombre: {{persona.nombre}} - Puntos:{{persona.puntos}} - Rol:{{persona.rol}}
+    <button (click)="Incrementar(persona.nombre)">Añadir punto</button>
+    
+  </li>
+  
+</ul>
+
+
+
+</div>
+
+  
