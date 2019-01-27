@@ -1,20 +1,48 @@
 <button (click)="Mostrar()">Monstrar las lista de persona</button>
+<button (click)="OrdenarPuntos()">Ordenar Segun Puntos</button>
+<button (click)="ClearPuntos()">Clear Puntos</button>
 
-
-<div >
-  <button (click)="AddUser('Alex','EEE','Student',0)">Add users</button>
+<div>
 <h2>Lista de Students</h2>
 <ul *ngFor = "let persona of lista">
   <li >
     Nombre: {{persona.nombre}} - Puntos:{{persona.puntos}} - Rol:{{persona.rol}}
     <button (click)="Incrementar(persona.nombre)">Añadir punto</button>
-    
-  </li>
-  
+    <button (click)="SetZeroPuntos(persona.nombre)">Set Puntos a Zero</button>
+    <button (click)="Eliminar(persona.nombre)">Eliminar</button>
+  </li>   
 </ul>
-
-
-
 </div>
 
+
+<h3>Add New Users</h3>
+<form (ngSubmit) ="PonPersona();">
   
+  <div>
+    <label>Nombre:</label>    
+    <input type="text" name ="nombre"  placeholder="Write a name" required [(ngModel)]="nombre">
+  </div>
+
+  <div>
+      <label>Password:</label>    
+      <input type="text" name ="pass"  placeholder="Write Password" required [(ngModel)]="pass">
+  </div>
+
+ <div>
+   <label>Rol: </label>
+  <select name ="rols" required [(ngModel)]="rol">
+      <option value="Student">Alumno</option>
+      <option value="Profesor">Profesor</option>
+  </select>   
+ </div>
+
+ <div>
+    <label>Puntos:</label>    
+    <input type="number" name ="punto"  placeholder="Puntos Iniciales" value="8" required [(ngModel)]="puntos" >
+</div>
+ 
+    <button>Crear nuevo alumno</button>
+
+</form>
+
+
