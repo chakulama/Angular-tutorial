@@ -59,4 +59,18 @@ export class ListaService {
      return this.lista;
    }
   
+   OrdenarAlfabeticamente():Persona[]{
+    this.lista = this.lista.sort(function (a, b) {
+      return a.nombre.toLowerCase() < b.nombre.toLowerCase() ? -1 : 1;
+    }
+    );
+    
+    return this.lista;
+
+  }
+
+
+
+
+
 }

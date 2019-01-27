@@ -52,5 +52,10 @@ puntos:number;
    
     
   }
+
+  OrdenarAlfabeticamente(){
+    this.lista=this.servicioLista.OrdenarAlfabeticamente();
+    
+  }
  
 }
