@@ -1,16 +1,16 @@
-<button (click)="Mostrar()">Monstrar las lista de persona</button>
-<button (click)="OrdenarPuntos()">Ordenar Segun Puntos</button>
-<button (click)="OrdenarAlfabeticamente()">Ordenar Segun Ordenar Alfabeticamente</button>
-<button (click)="ClearPuntos()">Clear Puntos</button>
+<button class="button" (click)="Mostrar()">Monstrar las lista de persona</button>
+<button class="button" (click)="OrdenarPuntos()">Ordenar Segun Puntos</button>
+<button class="button" (click)="OrdenarAlfabeticamente()">Ordenar Segun Ordenar Alfabeticamente</button>
+<button class="button" (click)="ClearPuntos()">Clear Puntos</button>
 
 <div>
 <h2>Lista de Students</h2>
 <ul *ngFor = "let persona of lista">
   <li >
     Nombre: {{persona.nombre}} - Puntos:{{persona.puntos}} - Rol:{{persona.rol}}
-    <button (click)="Incrementar(persona.nombre)">Añadir punto</button>
-    <button (click)="SetZeroPuntos(persona.nombre)">Set Puntos a Zero</button>
-    <button (click)="Eliminar(persona.nombre)">Eliminar</button>
+    <button class="button" (click)="Incrementar(persona.nombre)">Añadir punto</button>
+    <button class="button" (click)="SetZeroPuntos(persona.nombre)">Set Puntos a Zero</button>
+    <button class="button" (click)="Eliminar(persona.nombre)">Eliminar</button>
   </li>   
 </ul>
 </div>
@@ -42,7 +42,7 @@
     <input type="number" name ="punto"  placeholder="Puntos Iniciales" value="8" required [(ngModel)]="puntos" >
 </div>
  
-    <button>Crear nuevo alumno</button>
+    <button class="button" >Crear nuevo alumno</button>
 
 </form>
 
