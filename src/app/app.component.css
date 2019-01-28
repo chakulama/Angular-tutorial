@@ -1,12 +1,2 @@
-h1 {
-    color: #369;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 250%
-  }
-
-  h2 {
-    color: #444;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: lighter;
-  }
+@import 'https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css';
  
