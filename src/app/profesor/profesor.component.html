@@ -1,9 +1,14 @@
 <div class="container">
-    <button class="btn btn-primary" (click)="Mostrar()">Monstrar las lista de persona</button>
-    <button class="btn btn-primary" (click)="OrdenarPuntos()">Ordenar Segun Puntos</button>
-    <button class="btn btn-primary" (click)="OrdenarAlfabeticamente()">Ordenar Segun Ordenar Alfabeticamente</button>
-    <button class="btn btn-danger" (click)="ClearPuntos()">Clear Puntos</button>
-    
+  
+   
+    <div class="example-button-row">
+        <button  mat-raised-button color="primary" (click)="Mostrar()">Monstrar las lista de persona</button>
+    <button  mat-raised-button color="primary" (click)="OrdenarPuntos()">Ordenar Segun Puntos</button>
+    <button mat-raised-button color="primary" (click)="OrdenarAlfabeticamente()">Ordenar Segun Ordenar Alfabeticamente</button>
+    <button mat-raised-button color="warn" (click)="ClearPuntos()">Clear Puntos</button>
+      </div>
+
+
     <div>
     <h2 class ="text-success">Lista de Students</h2>
 
@@ -11,18 +16,20 @@
         <thead>
             <tr>
               <th scope="col">Nombre</th>
-              <th scope="col">Puntos</th>
+              <!--th scope="col">Puntos</th-->
               <th scope="col">Add Puntos</th>
               <th scope="col">Delete users</th>
             </tr>
           </thead>
 
+          
       <tbody>
           <tr class ="info" *ngFor = "let persona of lista">
-              <td><h4>{{persona.nombre}}</h4></td>
-              <td> <span class="badge"><h5>{{persona.puntos}}</h5></span></td>
+              <td><span matBadge={{persona.puntos}} matBadgeOverlap="false">{{persona.nombre}} </span></td>
+              
+             
               <td><button class="btn btn-success btn-sm" (click)="Incrementar(persona.nombre)"><span class="glyphicon glyphicon-plus"></span></button></td>
-              <td><button class="btn btn-danger btn-sm" (click)="Eliminar(persona.nombre)">Eliminar</button></td>
+              <td><button class="btn btn-danger btn-sm" (click)="Eliminar(persona.nombre)"><i class="material-icons red">delete</i></button></td>
             </tr>
       </tbody>
     </table>
