@@ -69,6 +69,15 @@ export class ListaService {
 
   }
 
+  Autentificar(nombre:string,pass:string):boolean{
+    let user:Persona[]=[];
+    user= this.lista.filter(persona=>persona.nombre === nombre && persona.pass=== pass);
+    if (user.length===0){
+      return false;
+    }
+    else
+      return true;
+  }
 
 
 

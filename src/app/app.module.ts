@@ -10,7 +10,9 @@ import { AppComponent } from './app.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { PersonaComponent } from './persona/persona.component';
 import { ProfesorComponent } from './profesor/profesor.component';
-import {MatIconModule} from '@angular/material/icon'; 
+import {MatIconModule} from '@angular/material/icon';
+import { LoginComponent } from './login/login.component';
+import { AppRoutingModule } from './app-routing.module'; 
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import {MatIconModule} from '@angular/material/icon';
     CalculatorComponent,
     PersonaComponent,
     ProfesorComponent,
+    LoginComponent,
     
   ],
   imports: [
@@ -26,7 +29,8 @@ import {MatIconModule} from '@angular/material/icon';
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
-    MatBadgeModule
+    MatBadgeModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
