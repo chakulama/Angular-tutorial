@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Persona } from '../Persona';
 import {ListaService} from '../lista.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-profesor',
@@ -13,7 +14,8 @@ nombre :string;
 pass :string;
 rol:string;
 puntos:number;
-  constructor(private servicioLista :ListaService) { }
+  constructor(private servicioLista :ListaService,
+              private location:Location) { }
 
   ngOnInit() {
   }
@@ -58,4 +60,9 @@ puntos:number;
     
   }
  
+Goback(){
+  console.log('Go back');
+  this.location.back();
+}
+
 }

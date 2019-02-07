@@ -1,9 +1,16 @@
-<form (ngSubmit)="Autentificar();">
-  <div >
+
+  
+
+      <form (ngSubmit)="Autentificar();">
+          <div >
+           
+            <input type="text" name="nombre" placeholder="Write your User name"  required [(ngModel)]="nombre" >
+            <input type="text" name="Password" placeholder="Write Your password"  required [(ngModel)]="password" >
+          </div>
+         
+          <button >Login</button>
+          
+        </form> 
+       
    
-    <input type="text" name="nombre" placeholder="Write your User name"  required [(ngModel)]="nombre" >
-    <input type="text" name="Password" placeholder="Write Your password"  required [(ngModel)]="password" >
-  </div>
  
-  <button >Login</button>
-</form> 

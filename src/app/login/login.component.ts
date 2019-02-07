@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ListaService } from '../lista.service';
+import {Persona} from '../Persona';
 
 @Component({
   selector: 'app-login',
@@ -17,9 +18,18 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   Autentificar(){
+   let persona:Persona;
     let res: Boolean;
-    res= this.servicioLista.Autentificar(this.nombre,this.password);
-    console.log(res);
+    persona= this.servicioLista.Autentificar(this.nombre,this.password);
+    if (persona != null)
+    {
+      if (persona.rol ==="Profesor")
+         window.location.href='/profesor';
+    }
+    else{
+      console.log("You are not a profesor!!");
+    }
+   
   }
-
+  
 }

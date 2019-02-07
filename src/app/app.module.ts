@@ -12,7 +12,8 @@ import { PersonaComponent } from './persona/persona.component';
 import { ProfesorComponent } from './profesor/profesor.component';
 import {MatIconModule} from '@angular/material/icon';
 import { LoginComponent } from './login/login.component';
-import { AppRoutingModule } from './app-routing.module'; 
+import { AppRoutingModule } from './app-routing.module';
+import { AlumnoComponent } from './alumno/alumno.component'; 
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
     PersonaComponent,
     ProfesorComponent,
     LoginComponent,
+    AlumnoComponent,
     
   ],
   imports: [

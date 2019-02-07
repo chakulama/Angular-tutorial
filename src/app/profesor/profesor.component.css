@@ -1,0 +1,9 @@
+.hero-image {
+    background-image: url("../../photo.jpg");
+    height:auto;
+	min-height:100%;
+    background-size:cover;
+	background-position:center;
+
+
+  }

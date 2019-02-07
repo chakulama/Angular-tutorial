@@ -69,17 +69,20 @@ export class ListaService {
 
   }
 
-  Autentificar(nombre:string,pass:string):boolean{
+  Autentificar(nombre:string,pass:string):Persona{
     let user:Persona[]=[];
     user= this.lista.filter(persona=>persona.nombre === nombre && persona.pass=== pass);
     if (user.length===0){
-      return false;
+      return null;
     }
     else
-      return true;
+      return user[0];
   }
 
+PonPass(nombre:string, nuevoPass:string): void{
 
+  this.lista.filter(persona=>persona.nombre===nombre)[0].pass=nuevoPass;
+}
 
 
 }
