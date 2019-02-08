@@ -14,6 +14,7 @@ nombre :string;
 pass :string;
 rol:string;
 puntos:number;
+aaa:Persona;
   constructor(private servicioLista :ListaService,
               private location:Location) { }
 
@@ -64,5 +65,13 @@ Goback(){
   console.log('Go back');
   this.location.back();
 }
+
+StudentDetails(nombre:string)
+{ 
+  this.aaa=this.servicioLista.StudentDetails(nombre);
+  alert(this.aaa.nombre + " "+this.aaa.pass+" "+this.aaa.puntos);
+  
+}
+
 
 }

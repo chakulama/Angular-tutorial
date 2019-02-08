@@ -6,12 +6,12 @@ import {AlumnoComponent} from './alumno/alumno.component';
 
 
 const routes: Routes = [
+  {path:'',redirectTo:'/login',pathMatch:'full'},
   { path: 'login', component: LoginComponent },
-{path:'',redirectTo:'/login',pathMatch:'full'},
-{path: 'profesor', component: ProfesorComponent},
-{path: 'alumno', component: AlumnoComponent}
+  {path: 'profesor', component: ProfesorComponent},
+  {path: 'alumno/:nombre', component: AlumnoComponent}
 
-];
+                        ];
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ]

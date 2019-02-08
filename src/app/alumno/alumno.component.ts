@@ -13,14 +13,23 @@ export class AlumnoComponent implements OnInit {
 
   alumno :Persona;
   nuevoPass:string;
-  constructor(private servicioLista: ListaService) { }
+  constructor(private servicioLista: ListaService,
+          private route:ActivatedRoute,
+          private location:Location) { }
 
   ngOnInit() {
     const nombre = this.route.snapshot.paramMap.get('nombre');
+    this.alumno= this.servicioLista.DamePersona(nombre);
   }
 
 
   Cambia(){
     this.servicioLista.PonPass(this.alumno.nombre,this.nuevoPass)
+  }
+
+  goBack()
+  {
+    console.log('Go back');
+    this.location.back();
   }
 }

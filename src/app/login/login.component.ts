@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
 
   nombre:string;
   password:string;
- 
+ message:string;
 
   constructor(private servicioLista: ListaService) { }
 
@@ -25,10 +25,16 @@ export class LoginComponent implements OnInit {
     {
       if (persona.rol ==="Profesor")
          window.location.href='/profesor';
+        
+         else{
+          window.location.href='./alumno/'+persona.nombre;
+        }
     }
-    else{
-      console.log("You are not a profesor!!");
+    else
+    { this.message="userName or Password is Incorrect";
+      alert(this.message);
     }
+    
    
   }
   
