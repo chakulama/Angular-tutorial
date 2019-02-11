@@ -69,10 +69,10 @@ export class ListaService {
 
   }
 
-  Autentificar(nombre:string,pass:string):Persona{
+  Autentificar(nombre:string,password:string):Persona{
     let user:Persona[]=[];
     
-    user= this.lista.filter(persona=>persona.nombre === nombre && persona.pass=== pass);
+    user= this.lista.filter(persona=>persona.nombre === nombre && persona.password=== password);
     if (user.length===0){
       return null;
     }
@@ -82,7 +82,7 @@ export class ListaService {
 
 PonPass(nombre:string, nuevoPass:string): void{
 
-  this.lista.filter(persona=>persona.nombre===nombre)[0].pass=nuevoPass;
+  this.lista.filter(persona=>persona.nombre===nombre)[0].password=nuevoPass;
 }
 
 

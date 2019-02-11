@@ -19,7 +19,23 @@ export class DbServiceService {
 DamePersona(nombre:string):Observable<Persona>{
   return this.http.get<Persona>(this.APIUrl+'/'+nombre);
 }
+PonPersona(persona:Persona):Observable<any>{
+  console.log(persona);
+  return this.http.post<any>(this.APIUrl,persona)
 
+}
+
+
+Incrementar(persona:Persona):Observable<any>{
+  persona.puntos++;
+  
+  return this.http.put<any>(this.APIUrl+'/'+persona.nombre,persona)
+ }
+
+
+ Eliminar(nombre:string):Observable<any>{
+  return this.http.delete<any>(this.APIUrl+'/'+nombre)
+ }
 
 
 }

@@ -12,7 +12,7 @@ import {DbServiceService} from '../db-service.service';
 export class ProfesorComponent implements OnInit {
 lista: Persona []=[];
 nombre :string;
-pass :string;
+password :string;
 rol:string;
 puntos:number;
 aaa:Persona;
@@ -29,10 +29,30 @@ aaa:Persona;
       console.log(this.lista)});
     
   }
-  Incrementar (nombre :string){
-    this.lista= this.servicioLista.Incrementar(nombre);
+
+  PonPersona(persona:Persona){
    
+    //console.log(persona);
+   
+    this.dbService.PonPersona(new Persona(this.nombre,this.password,this.rol,this.puntos)).subscribe(()=>this.Mostrar());
+    console.log("new person added:"+persona.nombre);
+
   }
+
+  Incrementar (persona :Persona){
+    this.dbService.Incrementar(persona).subscribe(()=>this.Mostrar()); 
+    console.log("Point added:"+persona.puntos) 
+  }
+
+
+  Eliminar(nombre:string){
+    console.log(nombre);
+    this.dbService.Eliminar(nombre).subscribe(()=>this.Mostrar());  
+    
+  }
+
+
+
 
 
   SetZeroPuntos (nombre :string){
@@ -45,21 +65,15 @@ aaa:Persona;
   }
 
 
-  AddUser(nombre:string,pass:string,rol:string,puntos:number){
-    this.lista[this.lista.length+1]= new Persona(nombre,pass,rol,puntos);
+  AddUser(nombre:string,password:string,rol:string,puntos:number){
+    this.lista[this.lista.length+1]= new Persona(nombre,password,rol,puntos);
   }
 
-  Eliminar(nombre:string){
-    this.lista=this.servicioLista.Eliminar(nombre);
-  }
+  
   OrdenarPuntos(){
     this.lista=this.servicioLista.OrdenarPuntos();
   }
-  PonPersona(persona:Persona){
-    this.lista=this.servicioLista.PonPersona( new Persona(this.nombre,this.pass,this.rol,this.puntos));
-   
-    
-  }
+  
 
   OrdenarAlfabeticamente(){
     this.lista=this.servicioLista.OrdenarAlfabeticamente();
@@ -74,7 +88,7 @@ Goback(){
 StudentDetails(nombre:string)
 { 
   this.aaa=this.servicioLista.StudentDetails(nombre);
-  alert(this.aaa.nombre + " "+this.aaa.pass+" "+this.aaa.puntos);
+  alert(this.aaa.nombre + " "+this.aaa.password+" "+this.aaa.puntos);
   
 }
 

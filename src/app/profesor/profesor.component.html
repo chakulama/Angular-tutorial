@@ -37,7 +37,7 @@
               <td><span matBadge={{persona.puntos}} matBadgeOverlap="false">{{persona.nombre}} </span></td>
               
              
-              <td><button class="btn btn-success btn-sm" (click)="Incrementar(persona.nombre)"><span class="glyphicon glyphicon-plus"></span></button></td>
+              <td><button class="btn btn-success btn-sm" (click)="Incrementar(persona)"><span class="glyphicon glyphicon-plus"></span></button></td>
               <td><button class="btn btn-danger btn-sm" (click)="Eliminar(persona.nombre)"><i class="material-icons red">delete</i></button></td>
               <td><button class="btn btn-success btn-sm" (click)="StudentDetails(persona.nombre)"><span class="glyphicon glyphicon"></span></button></td>
             </tr>
@@ -62,7 +62,7 @@
     <form class="form-inline" (ngSubmit) ="PonPersona();">
         <input type="text" class ="form-control mb-2 mr-sm-2" name ="nombre"  placeholder="Write a name" required [(ngModel)]="nombre">
        
-        <input type="text" class ="form-control mb-2 mr-sm-2" name ="pass"  placeholder="Write Password" required [(ngModel)]="pass">
+        <input type="text" class ="form-control mb-2 mr-sm-2" name ="password"  placeholder="Write Password" required [(ngModel)]="password">
         <select  class ="form-control mb-2 mr-sm-2" name ="rols" required [(ngModel)]="rol">
             <option value="Student">Alumno</option>
             <option value="Profesor">Profesor</option>
