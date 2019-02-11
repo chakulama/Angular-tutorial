@@ -15,6 +15,11 @@ import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AlumnoComponent } from './alumno/alumno.component'; 
 
+
+import {HttpClientModule} from '@angular/common/http';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +37,9 @@ import { AlumnoComponent } from './alumno/alumno.component';
     MatButtonModule,
     MatIconModule,
     MatBadgeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

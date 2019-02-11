@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Persona } from '../Persona';
 import {ListaService} from '../lista.service';
 import {Location} from '@angular/common';
+import {DbServiceService} from '../db-service.service';
 
 @Component({
   selector: 'app-profesor',
@@ -16,12 +17,16 @@ rol:string;
 puntos:number;
 aaa:Persona;
   constructor(private servicioLista :ListaService,
-              private location:Location) { }
+              private location:Location,
+              private dbService:DbServiceService) { }
 
   ngOnInit() {
   }
   Mostrar(){
-    this.lista=this.servicioLista.Mostrar();
+    //this.lista=this.servicioLista.Mostrar();
+    console.log('Voy a pedir');
+    this.dbService.Mostrar().subscribe(lista=> {this.lista=lista;
+      console.log(this.lista)});
     
   }
   Incrementar (nombre :string){
