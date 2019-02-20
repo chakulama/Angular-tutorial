@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ListaService } from '../lista.service';
 import {Persona} from '../Persona';
+import {DbServiceService} from '../db-service.service';
 
 @Component({
   selector: 'app-login',
@@ -13,29 +14,32 @@ export class LoginComponent implements OnInit {
   password:string;
  message:string;
 
-  constructor(private servicioLista: ListaService) { }
+  constructor(private servicioLista: ListaService,
+              private dbService:DbServiceService) { }
 
   ngOnInit() {
   }
-  Autentificar(){
-   let persona:Persona;
-    let res: Boolean;
-    persona= this.servicioLista.Autentificar(this.nombre,this.password);
-    if (persona != null)
-    {
-      if (persona.rol ==="Profesor")
-         window.location.href='/profesor';
-        
-         else{
-          window.location.href='./alumno/'+persona.nombre;
-        }
-    }
-    else
-    { this.message="userName or Password is Incorrect";
-      alert(this.message);
-    }
+  Autentificar()
+  {
+    this.dbService.DamePersona(this.nombre).subscribe(
+                                                  persona=> {
+                                                    if (persona != null)
+                                                    {
+                                                      if (persona.rol ==="Profesor")
+                                                        { window.location.href='/profesor';}
+                                                                                                               
+                                                      else{
+                                                          window.location.href='./alumno/'+persona.nombre;
+                                                          console.log("Log in "+persona.nombre );
+                                                          
+                                                        }
+                                                    }
+                                                   
+                                                      } );
+   }
+    
     
    
-  }
+  
   
 }
