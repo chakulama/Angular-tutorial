@@ -14,11 +14,11 @@ import {MatIconModule} from '@angular/material/icon';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AlumnoComponent } from './alumno/alumno.component'; 
-
+import { ApolloModule, Apollo } from 'apollo-angular';
+import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import {HttpClientModule} from '@angular/common/http';
-
-
 
 @NgModule({
   declarations: [
@@ -39,9 +39,19 @@ import {HttpClientModule} from '@angular/common/http';
     MatBadgeModule,
     AppRoutingModule,
     
-    HttpClientModule
+    HttpClientModule,
+    ApolloModule,
+    HttpLinkModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(apollo: Apollo, httpLink: HttpLink) {
+    apollo.create({
+      link: httpLink.create({uri: 'http://localhost:4000/'}),
+      cache: new InMemoryCache()
+    });
+  }
+
+ }

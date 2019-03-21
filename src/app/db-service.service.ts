@@ -14,8 +14,6 @@ export class DbServiceService {
     return this.http.get<Persona[]>(this.APIUrl);
   }
 
-
-  
 DamePersona(nombre:string):Observable<Persona>{
   return this.http.get<Persona>(this.APIUrl+'/'+nombre);
 }
@@ -25,17 +23,14 @@ PonPersona(persona:Persona):Observable<any>{
 
 }
 
-
 Incrementar(persona:Persona):Observable<any>{
   persona.puntos++;
   
   return this.http.put<any>(this.APIUrl+'/'+persona.nombre,persona)
  }
 
-
  Eliminar(nombre:string):Observable<any>{
   return this.http.delete<any>(this.APIUrl+'/'+nombre)
  }
-
 
 }
