@@ -9,5 +9,6 @@ export type PersonaGQL =
 export type Query ={
     me: PersonaGQL;
     personas(query: String): [PersonaGQL];
+    getpersona(name: String):PersonaGQL
    
   }

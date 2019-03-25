@@ -3,7 +3,7 @@ import { ListaService } from '../lista.service';
 import {Persona} from '../Persona';
 import {DbServiceService} from '../db-service.service';
 import { Apollo } from 'apollo-angular';
-import { Observable } from 'rxjs';
+import { Observable,of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import gql from 'graphql-tag';
@@ -20,37 +20,35 @@ export class LoginComponent implements OnInit {
   nombre:string;
   password:string;
  message:string;
-
  plist: Observable<any>;
 
   constructor(private servicioLista: ListaService,
-              private dbService:DbServiceService,
-              private apollo: Apollo
+              private dbService:DbServiceService
+              
                      ) { }
 
-  ngOnInit() {
-    this.plist = this.apollo.watchQuery<Query>({
-      query: gql`
-      query personas{
-        personas{
-          username
-          password
-        }
-      }
-      `
-    })
-    .valueChanges
-    .pipe(
-      map (result => result.data.personas)
-    );
-
-    this.plist.forEach(element => {console.log(element)
-      
-    });
-   
-  }
+                     ngOnInit() {
+                      }                
 
   Autentificar2(){
+   
+    this.dbService.test(this.nombre).subscribe(
+      persona=> {
+        
+        if (persona != null)
+        {
+         
+          if (persona.rol ==="Profersor")
+            { window.location.href='/profesor';}
+                                                                   
+          else{
+            console.log("Log in "+persona.username );
+              window.location.href='./alumno/'+persona.username;
+              
+            }
+        }
+       
+          } );
    
   }
   Autentificar()
