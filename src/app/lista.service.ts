@@ -20,13 +20,13 @@ export class ListaService {
      return this.lista;
    }
 
-   Incrementar(nombre:string): Persona[]{
-    this.lista.filter(persona => persona.nombre === nombre)[0].puntos ++;
+   Incrementar(username:string): Persona[]{
+    this.lista.filter(persona => persona.username === username)[0].puntos ++;
     return this.lista;
    }
 
-   SetZeroPuntos(nombre:string): Persona[]{
-    this.lista.filter(persona => persona.nombre === nombre)[0].puntos =0;
+   SetZeroPuntos(username:string): Persona[]{
+    this.lista.filter(persona => persona.username === username)[0].puntos =0;
     return this.lista;
    }
 
@@ -34,14 +34,14 @@ export class ListaService {
    ClearPuntos(): Persona[]{
 
     for(var i=0; i<this.lista.length; i++){
-      this.lista.filter(persona => persona.nombre)[i].puntos =0;
+      this.lista.filter(persona => persona.username)[i].puntos =0;
     }
     return this.lista;
   
    }
 
-   Eliminar (nombre:string): Persona[] {
-     this.lista= this.lista.filter(persona=>persona.nombre !==nombre);
+   Eliminar (username:string): Persona[] {
+     this.lista= this.lista.filter(persona=>persona.username !==username);
      return this.lista;
    }
 
@@ -61,7 +61,7 @@ export class ListaService {
   
    OrdenarAlfabeticamente():Persona[]{
     this.lista = this.lista.sort(function (a, b) {
-      return a.nombre.toLowerCase() < b.nombre.toLowerCase() ? -1 : 1;
+      return a.username.toLowerCase() < b.username.toLowerCase() ? -1 : 1;
     }
     );
     
@@ -69,10 +69,10 @@ export class ListaService {
 
   }
 
-  Autentificar(nombre:string,password:string):Persona{
+  Autentificar(username:string,password:string):Persona{
     let user:Persona[]=[];
     
-    user= this.lista.filter(persona=>persona.nombre === nombre && persona.password=== password);
+    user= this.lista.filter(persona=>persona.username === username && persona.password=== password);
     if (user.length===0){
       return null;
     }
@@ -80,19 +80,19 @@ export class ListaService {
       return user[0];
   }
 
-PonPass(nombre:string, nuevoPass:string): void{
+PonPass(username:string, nuevoPass:string): void{
 
-  this.lista.filter(persona=>persona.nombre===nombre)[0].password=nuevoPass;
+  this.lista.filter(persona=>persona.username===username)[0].password=nuevoPass;
 }
 
 
 
-DamePersona(nombre:string):Persona{
-  return this.lista.filter(persona=>persona.nombre===nombre)[0];
+DamePersona(username:string):Persona{
+  return this.lista.filter(persona=>persona.username===username)[0];
 }
 
-StudentDetails(nombre:string):Persona{
-  return this.lista.filter(persona=>persona.nombre===nombre)[0];
+StudentDetails(username:string):Persona{
+  return this.lista.filter(persona=>persona.username===username)[0];
 }
 
 }

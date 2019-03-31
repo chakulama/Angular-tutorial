@@ -20,15 +20,15 @@ export class AlumnoComponent implements OnInit {
 
   ngOnInit() {
     this.alumno=new Persona('BL','ppp','Student',0);
-    const nombre = this.route.snapshot.paramMap.get('nombre');
-    //this.alumno= this.servicioLista.DamePersona(nombre);
-    this.dbService.DamePersona(nombre).subscribe(alumno=>{this.alumno = alumno;
+    const username = this.route.snapshot.paramMap.get('username');
+    //this.alumno= this.servicioLista.DamePersona(username);
+    this.dbService.DamePersona(username).subscribe(alumno=>{this.alumno = alumno;
     console.log(this.alumno)})
   }
 
 
   Cambia(){
-    this.servicioLista.PonPass(this.alumno.nombre,this.nuevoPass)
+    this.servicioLista.PonPass(this.alumno.username,this.nuevoPass)
   }
 
   goBack()

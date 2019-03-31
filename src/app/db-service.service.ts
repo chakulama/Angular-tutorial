@@ -22,7 +22,7 @@ export class DbServiceService {
     private apollo: Apollo
     ) { }
     
-    test(nombre:string):Observable<any>
+    test(username:string):Observable<any>
     {    
       const query =gql`
       query($name:String!) {
@@ -37,7 +37,7 @@ export class DbServiceService {
         this.plist = this.apollo.watchQuery<Query>({
         query: query,
         variables:{
-          name:nombre
+          name:username
         }
         
       })
@@ -53,12 +53,12 @@ export class DbServiceService {
     return this.http.get<Persona[]>(this.APIUrl);
   }
 
-  DamePersonaGQL(nombre:String):Observable<any>
+  DamePersonaGQL(username:String):Observable<any>
   {
-         return this.http.get<Persona>(this.APIUrl+'/'+nombre);
+         return this.http.get<Persona>(this.APIUrl+'/'+username);
   }
-DamePersona(nombre:string):Observable<Persona>{
-  return this.http.get<Persona>(this.APIUrl+'/'+nombre);
+DamePersona(username:string):Observable<Persona>{
+  return this.http.get<Persona>(this.APIUrl+'/'+username);
 }
 PonPersona(persona:Persona):Observable<any>{
   console.log(persona);
@@ -69,11 +69,11 @@ PonPersona(persona:Persona):Observable<any>{
 Incrementar(persona:Persona):Observable<any>{
   persona.puntos++;
   
-  return this.http.put<any>(this.APIUrl+'/'+persona.nombre,persona)
+  return this.http.put<any>(this.APIUrl+'/'+persona.username,persona)
  }
 
- Eliminar(nombre:string):Observable<any>{
-  return this.http.delete<any>(this.APIUrl+'/'+nombre)
+ Eliminar(username:string):Observable<any>{
+  return this.http.delete<any>(this.APIUrl+'/'+username)
  }
 
 }

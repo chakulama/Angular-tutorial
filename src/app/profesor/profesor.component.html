@@ -24,7 +24,7 @@
     <table  width="400">
         <thead>
             <tr>
-              <th scope="col">Nombre</th>
+              <th scope="col">username</th>
               <!--th scope="col">Puntos</th-->
               <th scope="col">Add Puntos</th>
               <th scope="col">Delete users</th>
@@ -34,22 +34,22 @@
           
       <tbody>
           <tr class ="info" *ngFor = "let persona of lista">
-              <td><span matBadge={{persona.puntos}} matBadgeOverlap="false">{{persona.nombre}} </span></td>
+              <td><span matBadge={{persona.puntos}} matBadgeOverlap="false">{{persona.username}} </span></td>
               
              
               <td><button class="btn btn-success btn-sm" (click)="Incrementar(persona)"><span class="glyphicon glyphicon-plus"></span></button></td>
-              <td><button class="btn btn-danger btn-sm" (click)="Eliminar(persona.nombre)"><i class="material-icons red">delete</i></button></td>
-              <td><button class="btn btn-success btn-sm" (click)="StudentDetails(persona.nombre)"><span class="glyphicon glyphicon"></span></button></td>
+              <td><button class="btn btn-danger btn-sm" (click)="Eliminar(persona.username)"><i class="material-icons red">delete</i></button></td>
+              <td><button class="btn btn-success btn-sm" (click)="StudentDetails(persona.username)"><span class="glyphicon glyphicon"></span></button></td>
             </tr>
       </tbody>
     </table>
     </div>
     <!--ul *ngFor = "let persona of lista">
       <li >
-        Nombre: {{persona.nombre}} - Puntos:{{persona.puntos}} - Rol:{{persona.rol}}
-        <button class="btn btn-success btn-sm" (click)="Incrementar(persona.nombre)"><span class="glyphicon glyphicon-plus"></span></button>
+        username: {{persona.username}} - Puntos:{{persona.puntos}} - Rol:{{persona.rol}}
+        <button class="btn btn-success btn-sm" (click)="Incrementar(persona.username)"><span class="glyphicon glyphicon-plus"></span></button>
         
-        <button class="btn btn-danger btn-sm" (click)="Eliminar(persona.nombre)">Eliminar</button>
+        <button class="btn btn-danger btn-sm" (click)="Eliminar(persona.username)">Eliminar</button>
       </li>  
     </ul--> 
    
@@ -60,7 +60,7 @@
            
     <h3 class ="text-success">Add New Users</h3>
     <form class="form-inline" (ngSubmit) ="PonPersona();">
-        <input type="text" class ="form-control mb-2 mr-sm-2" name ="nombre"  placeholder="Write a name" required [(ngModel)]="nombre">
+        <input type="text" class ="form-control mb-2 mr-sm-2" name ="username"  placeholder="Write a name" required [(ngModel)]="username">
        
         <input type="text" class ="form-control mb-2 mr-sm-2" name ="password"  placeholder="Write Password" required [(ngModel)]="password">
         <select  class ="form-control mb-2 mr-sm-2" name ="rols" required [(ngModel)]="rol">

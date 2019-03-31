@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 import gql from 'graphql-tag';
 
 import {PersonaGQL,Query} from '../types';
+import {GraphqlService} from '../graphql.service';
 
 @Component({
   selector: 'app-login',
@@ -17,13 +18,14 @@ import {PersonaGQL,Query} from '../types';
 })
 export class LoginComponent implements OnInit {
 
-  nombre:string;
+  username:string;
   password:string;
  message:string;
  plist: Observable<any>;
 
   constructor(private servicioLista: ListaService,
-              private dbService:DbServiceService
+              private dbService:DbServiceService,
+              private grapqlservive:GraphqlService
               
                      ) { }
 
@@ -31,7 +33,7 @@ export class LoginComponent implements OnInit {
                       } 
 
  Autentificar2(){
-this.dbService.test(this.nombre).subscribe(
+this.grapqlservive.getpersona(this.username).subscribe(
   persona=> {
     if (persona!=undefined)
        console.log (persona.username)
@@ -43,7 +45,7 @@ this.dbService.test(this.nombre).subscribe(
                       }
   Login(){
    
-    this.dbService.test(this.nombre).subscribe(
+    this.grapqlservive.getpersona(this.username).subscribe(
       persona=> 
       {
         
@@ -69,7 +71,7 @@ this.dbService.test(this.nombre).subscribe(
   }
   Autentificar()
   {
-    this.dbService.DamePersona(this.nombre).subscribe(
+    this.dbService.DamePersona(this.username).subscribe(
                                                   persona=> {
                                                     if (persona != null)
                                                     {
@@ -77,8 +79,8 @@ this.dbService.test(this.nombre).subscribe(
                                                         { window.location.href='/profesor';}
                                                                                                                
                                                       else{
-                                                          window.location.href='./alumno/'+persona.nombre;
-                                                          console.log("Log in "+persona.nombre );
+                                                          window.location.href='./alumno/'+persona.username;
+                                                          console.log("Log in "+persona.username );
                                                           
                                                         }
                                                     }

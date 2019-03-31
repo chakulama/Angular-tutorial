@@ -1,16 +1,14 @@
 export class Persona{
-    nombre:string;
+    username:string;
     password:string;
     rol:string;
     puntos:number;
     
-
-    constructor(  nombre:string,password:string,rol:string,puntos:number){
-        this.nombre=nombre;
+    constructor(  username:string,password:string,rol:string,puntos:number){
+        this.username=username;
         this.password=password;
         this.rol=rol;
         this.puntos=puntos;
     }
 
-  
 }

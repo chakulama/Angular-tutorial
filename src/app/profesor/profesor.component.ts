@@ -3,6 +3,7 @@ import {Persona } from '../Persona';
 import {ListaService} from '../lista.service';
 import {Location} from '@angular/common';
 import {DbServiceService} from '../db-service.service';
+import {GraphqlService} from '../graphql.service';
 
 @Component({
   selector: 'app-profesor',
@@ -11,70 +12,67 @@ import {DbServiceService} from '../db-service.service';
 })
 export class ProfesorComponent implements OnInit {
 lista: Persona []=[];
-nombre :string;
+username :string;
 password :string;
 rol:string;
 puntos:number;
 aaa:Persona;
   constructor(private servicioLista :ListaService,
               private location:Location,
-              private dbService:DbServiceService) { }
+              private dbService:DbServiceService,
+              private graphqlservice:GraphqlService) { }
 
   ngOnInit() {
   }
   Mostrar(){
     //this.lista=this.servicioLista.Mostrar();
-    console.log('Voy a pedir');
-    this.dbService.Mostrar().subscribe(lista=> {this.lista=lista;
-      console.log(this.lista)});
-    
+    //console.log('Voy a pedir');
+    //this.dbService.Mostrar().subscribe(lista=> {this.lista=lista;});
+    this.graphqlservice.Mostrar().subscribe(lista=> {
+      this.lista=lista.filter(li=>li.rol==="Student");
+    });
+      
   }
 
   PonPersona(persona:Persona){
    
     //console.log(persona);
    
-    this.dbService.PonPersona(new Persona(this.nombre,this.password,this.rol,this.puntos)).subscribe(()=>this.Mostrar());
-    console.log("new person added:"+persona.nombre);
+   // this.dbService.PonPersona(new Persona(this.username,this.password,this.rol,this.puntos)).subscribe(()=>this.Mostrar());
+   this.graphqlservice.PonPersona(new Persona(this.username,this.password,this.rol,this.puntos)).subscribe(()=>this.Mostrar());
+   console.log("new person added:"+persona.username);
 
   }
 
   Incrementar (persona :Persona){
-    this.dbService.Incrementar(persona).subscribe(()=>this.Mostrar()); 
+    //this.dbService.Incrementar(persona).subscribe(()=>this.Mostrar());
+    console.log("Initial Point:"+persona.puntos) 
+    this.graphqlservice.Incrementar(persona).subscribe(()=>this.Mostrar()); 
     console.log("Point added:"+persona.puntos) 
   }
 
-
-  Eliminar(nombre:string){
-    console.log(nombre);
-    this.dbService.Eliminar(nombre).subscribe(()=>this.Mostrar());  
+  Eliminar(username:string){
+    console.log(username);
+    this.dbService.Eliminar(username).subscribe(()=>this.Mostrar());  
     
   }
 
-
-
-
-
-  SetZeroPuntos (nombre :string){
-    this.lista=this.servicioLista.SetZeroPuntos(nombre);
+  SetZeroPuntos (username :string){
+    this.lista=this.servicioLista.SetZeroPuntos(username);
   }
-
 
   ClearPuntos (){
     this.lista=this.servicioLista.ClearPuntos();
   }
 
-
-  AddUser(nombre:string,password:string,rol:string,puntos:number){
-    this.lista[this.lista.length+1]= new Persona(nombre,password,rol,puntos);
+  AddUser(username:string,password:string,rol:string,puntos:number){
+    this.lista[this.lista.length+1]= new Persona(username,password,rol,puntos);
   }
 
-  
   OrdenarPuntos(){
     this.lista=this.servicioLista.OrdenarPuntos();
   }
   
-
   OrdenarAlfabeticamente(){
     this.lista=this.servicioLista.OrdenarAlfabeticamente();
     
@@ -85,12 +83,11 @@ Goback(){
   this.location.back();
 }
 
-StudentDetails(nombre:string)
+StudentDetails(username:string)
 { 
-  this.aaa=this.servicioLista.StudentDetails(nombre);
-  alert(this.aaa.nombre + " "+this.aaa.password+" "+this.aaa.puntos);
+  this.aaa=this.servicioLista.StudentDetails(username);
+  alert(this.aaa.username + " "+this.aaa.password+" "+this.aaa.puntos);
   
 }
-
 
 }
