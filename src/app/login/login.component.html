@@ -1,10 +1,11 @@
- 
- 
-        <form (ngSubmit)="Autentificar2();">
+<div class ="hero-image">
+
+  
+        <form (ngSubmit)="Login();">
                    
             <div class="container">
               <label for="uname"><b>Username</b></label>
-              <input type="text" name="nombre" placeholder="Write your User name"  required [(ngModel)]="nombre" >
+              <input type="text" name="nombre" placeholder="Write your UserName"  required [(ngModel)]="nombre" >
           
               <label for="psw"><b>Password</b></label>
               <input type="text" name="Password" placeholder="Write Your password"  required [(ngModel)]="password" >
@@ -15,8 +16,6 @@
               </label>
             </div>
           
-            <div class="container" style="background-color:#f1f1">
-              <button type="button" class="cancelbtn">Cancel</button>
-              <span class="psw">Forgot <a href="#">password?</a></span>
-            </div>
+            
           </form> 
+           

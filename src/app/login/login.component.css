@@ -1,7 +1,22 @@
+
 .hero-image {
-    background-image: url("https://www.w3schools.com/howto/photographer.jpg");
-    height: 100%; 
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+  background-image: url("../../assets/shell.jpg");
+ 
+  position: fixed; 
+  top: 0; 
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  background-size: cover;
+
+}
+form{
+  position:fixed;
+   top:30%;
+   left:30%;
+   width:250px;
+   
+}

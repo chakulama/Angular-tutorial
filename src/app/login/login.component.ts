@@ -28,17 +28,29 @@ export class LoginComponent implements OnInit {
                      ) { }
 
                      ngOnInit() {
-                      }                
+                      } 
 
-  Autentificar2(){
+ Autentificar2(){
+this.dbService.test(this.nombre).subscribe(
+  persona=> {
+    if (persona!=undefined)
+       console.log (persona.username)
+     else
+     window.alert("username incorrect")  
+
+    });
+
+                      }
+  Login(){
    
     this.dbService.test(this.nombre).subscribe(
-      persona=> {
+      persona=> 
+      {
         
-        if (persona != null)
+        if (persona != undefined)
         {
          
-          if (persona.rol ==="Profersor")
+          if (persona.rol ==="Profesor")
             { window.location.href='/profesor';}
                                                                    
           else{
@@ -47,8 +59,12 @@ export class LoginComponent implements OnInit {
               
             }
         }
-       
-          } );
+        else
+        window.alert("username incorrect") 
+         
+      } 
+         
+          );
    
   }
   Autentificar()

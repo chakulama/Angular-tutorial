@@ -1,3 +1,4 @@
+import {Persona} from './Persona';
 export type PersonaGQL =
 {
          username:String;

@@ -15,16 +15,15 @@ import {PersonaGQL,Query} from './types';
   providedIn: 'root'
 })
 export class DbServiceService {
-
   plist: Observable<any>;
-
+  
   private APIUrl="http://127.0.0.1:3000/personas";
   constructor(private http:HttpClient,
     private apollo: Apollo
     ) { }
-
-    test(nombre:string):Observable<any>{
     
+    test(nombre:string):Observable<any>
+    {    
       const query =gql`
       query($name:String!) {
         getpersona(name:$name){
@@ -44,8 +43,9 @@ export class DbServiceService {
       })
       .valueChanges.pipe(map (result => result.data.getpersona));
       
-     // this.plist.forEach(element => {console.log(element) });
-      
+      //this.plist.forEach(element => {console.log(element) });
+     
+     
       return this.plist;
     }
 
