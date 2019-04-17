@@ -47,9 +47,13 @@ import {HttpClientModule} from '@angular/common/http';
   bootstrap: [AppComponent]
 })
 export class AppModule {
+ 
   constructor(apollo: Apollo, httpLink: HttpLink) {
+    const uri1='http://localhost:4000/'
+    const uri2=' http://localhost:60000/simple/v1/cjuh6o1qt00040111s5hw8fro'
+const uri3='http://localhost:4466/'
     apollo.create({
-      link: httpLink.create({uri: 'http://localhost:4000/'}),
+      link: httpLink.create({uri: uri3}),
       cache: new InMemoryCache()
     });
   }
